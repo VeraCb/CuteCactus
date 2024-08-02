@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{
+  --header-height: 3.5rem;
+  /* ======typography and font========= */
+  --body-font: "Montserrat", sans-serif;
+  --biggest-font-size: 2.25rem;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: .938rem;
+  --small-font-size: .813rem;
+
+  /*========font weight==========  */
+  --font-regular: 400;
+  --font-semi-bold: 600;
+  --font-bold: 700;
+
+  /* ========= z index ========= */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  /* ===========color=========== */
+  --first-color: hsl(93, 54%, 54%);
+  --first-color-alt: hsl(93, 50%, 48%);
+  --first-color-light: hsl(93, 58%, 66%);
+  --title-color: hsl(228, 8%, 98%);
+  --text-color: hsl(228, 8%, 70%);
+  --white-color: hsl(228, 8%, 98%);
+  --black-color: hsl(228, 6%, 4%);
+  --body-color: hsl(228, 6%, 8%);
+  --container-color: hsl(228, 6%, 12%);
+  --shadow-img: 0 0 48px hsla(93, 54%, 54%, .4);
+  --gradient-card: linear-gradient(180deg, hsl(93, 8%, 8%), hsl(93, 40%, 30%));
+}
+
+/* ======= responsive typography ========= */
+@media screen and (min-width: 1150px) {
+  :root{
+  --biggest-font-size: 4.25rem;
+  --h1-font-size: 2.25rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  }
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html{
+  scroll-behavior: smooth;
+}
+
+body{
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+}
+
+h1, h2, h3, h4{
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+}
+ul{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* ===== reusable css classes ============= */
+.container{
+  max-width: 1120px;
+  margin-inline: 1.5rem;
+}
+.grid{
+  display: grid;
+  gap: 1.5rem;
+}
+.section{
+  padding-block: 5rem 1rem;
+}
+.section-title{
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-bold);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.main{
+overflow: hidden;
+}
+
+
+/* ============= HEADER AND NAVIGATION ============= */
+.header{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  z-index: var(--z-fixed);
+}
+
+.nav{
+  position: relative;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo,
+.nav-close,
+.nav-toogle,
+.nav-actions{
+display: flex;
+color: var(--title-color);
+cursor: pointer;
+}
+
+.nav-logo{
+  font-weight: var(--font-semi-bold);
+  column-gap: .25rem;
+  align-items: center;
+}
+
+.nav-logo i{
+  color: var(--first-color);
+  font-size: 1.25rem;
+  font-weight: initial;
+}
+
+.nav-actions{
+  font-size: 1.25rem;
+  column-gap: .5rem;
+  align-items: center;
+}
+
+
+
+/* navihation for mobile devices */
+@media screen and (max-width: 1150px) {
+  .nav-menu{
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: hsla(228, 24%, 6% .2);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    width: 80%;
+    height: 100%;
+    padding: 6rem 3rem 0;
+    transition: right .4s;
+  }
+}
+
+.nav-list{
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+
+}
+
+.nav-link{
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color .4s;
+}
+
+.nav-link:hover{
+  color: var(--first-color);
+}
+
+.nav-close{
+  position: absolute;
+  top: 1.15rem;
+  right: 1.5rem;
+  font-size: 1.25rem;
+
+}
+/* show menu */
+.show-menu{
+  right: 0;
+  
+}
+/* add blur header */
+.blur-header::after{
+content: "";
+position: absolute;
+width: 1000%;
+height: 100%;
+background-color: hsla(228, 24%, 6% .2);
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+top: 0;
+left: 0;
+z-index: -1;
+}
+/* active link */
+
+/* ============= HOME ============== */
+.home-container{
+padding-top: 2.5rem;
+row-gap: 2rem;
+}
+.home-img{
+  width: 270px;
+  filter: drop-shadow(var(--shadow-img));
+  justify-self: center;
+}
+
+.home-data{
+  text-align: center;
+
+}
+
+.home-title{
+  font-size: var(--biggest-font-size);
+  font-weight: var(--font-bold);
+  margin-bottom: 1rem;
+}
+.home-title span{
+  color: var(--first-color);
+}
+
+.home-description{
+  margin-bottom: 3rem;
+}
+
+.home-buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: .5rem;
+}
+
+
+/* ============= BUTTON ============== */
+
+.button{
+  background-color: var(--white-color);
+  color: var(--black-color);
+  font-weight: var(--font-bold);
+  padding: .5rem 1.5rem .5rem .5rem;
+  border-radius: 4rem;
+  display: inline-flex;
+  align-items: center;
+  column-gap: .75rem;
+}
+
+.button span{
+  background-color: var(--first-color);
+  pad: .5rem;
+  font-size: 1.25rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: transform .4s;
+}
+
+.button:hover span{
+  transform: translate(.15rem) rotate(-30deg);
+}
+
+.button-link{
+  color: var(--white-color);
+  font-weight: var(--font-bold);
+  text-decoration: underline;
+  transition: color .4s;
+}
+
+.button-link:hover{
+  color: var(--first-color);
+}
+
+
+
+/* ============= NEWS ============== */
+
+.new-data{
+  text-align: center;
+
+}
+.new-container{
+  row-gap: 7.5rem;
+}
+.new-content{
+  row-gap: 6rem;
+}
+
+.new-card{
+  position: relative;
+  width: 200px;
+  background: var(--gradient-card);
+  padding: 9rem .75rem 1.5rem .75rem;
+  border: 2px solid var(--first-color-light);
+  border-radius: 1.5rem;
+}
+
+.new-img{
+  position: absolute;
+  top: -4.5rem;
+  left: 0;
+  right: 0;
+  width: 180px;
+  margin: 0 auto;
+  transition: transform .4s;
+}
+
+.new-title{
+  font-size: var(--h2-font-size);
+  text-align: center;
+
+}
+
+.new-card:nth-child(odd){
+  rotate: -5deg;
+}
+
+.new-card:nth-child(even){
+  justify-self: flex-end;
+  rotate: 5deg;
+}
+
+.new-card:hover .new-img{
+transform: translateY(-.5rem);
+}
+/* ============= SHOP ============== */
+
+
+/* ============= CARE ============== */
+
+
+/* ============= CONTACT ============== */
+
+
+/* ============= FOOTER ============== */
